@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+<!--  -->
+{% block title %}
+Delete Product
+{% endblock %}
+
+<!--  -->
+{% block content %}
+<div class="card border-primary mb-6 position-static mx-auto shadow p-3 mb-5 bg-body rounded" style="width: 50rem;">
+    {% if user.is_authenticated and user.id == post.seller.id %}
+    <h1>
+        Delete Product...
+    </h1>
+    <hr>
+    <h3>
+        <div class="alert alert-danger" role="alert">
+            Do you really want to delete this Product?
+        </div>
+        <br>
+        <b>
+            <i style="margin-left: 40px; color: red">
+                -->{{ post.productName }}
+            </i> with the rating of {{ post.rating }}/5
+        </b>
+    </h3>
+    <br> <br>
+    <div class="form-group">
+
+        <form method="post">
+            {% csrf_token %}
+            <h5>
+                <div class="alert alert-danger" role="alert">
+                    Are you sure you want to DELETE this Product?
+                </div>
+                <br>
+                You cannot retrieve this information later on !
+            </h5>
+            <br> <br>
+            <button class="btn btn-danger">Dispose 🧺 it !</button>
+            <a href="{% url 'products' %}" class="btn btn-secondary">Nope I Want to Tethink 🧠</a>
+        </form>
+    </div>
+    {% else %}
+    <br> <br>
+    <div class="card-body">
+
+        <h1>
+            <center>
+                <div class="alert alert-danger" role="alert">
+                    YOU NEED AUTHORIZATION TO DELETE THE PRODUCT.
+                </div>
+
+                <br>
+                <br>
+                <div class="card-footer text-center">
+                    <a class="btn btn-success" href="{% url 'register' %}">Register</a>
+                    <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+                </div>
+
+            </center>
+        </h1>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

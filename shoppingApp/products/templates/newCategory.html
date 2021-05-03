@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+<!--  -->
+{% block title %}
+New Category
+{% endblock %}
+
+<!--  -->
+{% block content %}
+{% if user.is_authenticated %}
+
+<div class="card border-primary mb-6 position-static mx-auto shadow p-3 mb-5 bg-body rounded" style="width: 50rem;">
+    <h3 class="card-header">
+        New Category...
+    </h3>
+    <form method="post">
+        <div class="card-body">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+        </div>
+        <div class="card-footer text-center">
+            <button class="btn btn-success">Create</button>
+            <a href="{% url 'products' %}" class="btn btn-secondary">Back</a>
+        </div>
+    </form>
+</div>
+
+
+{% else %}
+<h1>
+    <center>
+        <div class="alert alert-danger" role="alert">
+            YOU NEED AUTHORIZATION TO DELETE THE PRODUCT.
+        </div>
+    
+        <br>
+        <br>
+        <a class="btn btn-success" href="{% url 'register' %}">Register</a>
+    
+        <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+    
+    </center>
+</h1>
+
+{% endif %}
+{% endblock %}

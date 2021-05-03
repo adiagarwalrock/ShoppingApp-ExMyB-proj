@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Product Categories
+{% endblock %}
+
+{% block content %}
+
+<h1>
+    <center>
+        All Categories
+    </center>
+</h1>
+<hr>
+<br>
+<div class="row">
+    {% for item in categoryList %}
+    <div class="col-sm-3 pb-4">
+        <div class="card border-success text-black">
+            <div class="card-body text-black">
+                <h5 class="card-title">{{ item }}</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="{% url 'category' item %}" class="btn btn-primary">Visit</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

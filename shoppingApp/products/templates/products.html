@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+PRODUCTS
+{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center">
+    All Products
+</h1>
+<hr>
+<br>
+
+<div class="row">
+    {% for post in object_list %}
+        <div class="col-sm-3">
+            <div class="card">
+                <!-- <img src="..." class="card-img-top" alt="..." height="200" width="200"> -->
+                <img src="{{ post.productImage.url}}" class="card-img-top rounded" height="200" width="auto">
+                <div class="card-body">
+                    <h5 class="card-title">
+                            {{post.brand}}: {{post.productName}}
+                    
+                    </h5>
+                    <p class="card-text">
+                        Rs. {{post.price}}\- only
+                        <br> <b>
+                            🌟
+                        </b> 
+                        {{ post.rating }} of 5
+                        <br> @{{post.seller}}
+                        <b>
+                            Category: 
+                        </b>
+                        {{ post.category}}
+                        <!-- <br> {{ post.productDetails|slice:":100"|safe }}... -->
+                    </p>
+                    <a href="{% url 'product' post.pk %}" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

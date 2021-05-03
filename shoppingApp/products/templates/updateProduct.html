@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+<!--  -->
+{% block title %}
+Update Product
+{% endblock %}
+
+<!--  -->
+{% block content %}
+<div class="card border-primary mb-6 position-static mx-auto shadow p-3 mb-5 bg-body rounded" style="width: 50rem;">
+{% if user.is_authenticated and user.id == post.seller.id %}
+
+    <h3 class="card-header">
+        Update PRODUCT...
+    </h3>
+    <form method="post">
+        <div class="card-body">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+
+        </div>
+        <div class="card-footer text-center">
+            <button class="btn btn-success">Update</button>
+            <a href="{% url 'products' %}" class="btn btn-secondary">Back</a>
+        </div>
+    </form>
+
+
+
+
+    {% else %}
+    <br> <br>
+    <div class="card-body">
+        <h1>
+            <center>
+                <div class="alert alert-warning" role="alert">
+                    YOU NEED AUTHORIZATION TO UPDATE THE PRODUCT.
+                </div>
+
+                <br>
+                <br>
+                <div class="card-footer text-center">
+                    <a class="btn btn-success" href="{% url 'register' %}">Register</a>
+                    <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+                </div>
+                    
+            </center>
+        </h1>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

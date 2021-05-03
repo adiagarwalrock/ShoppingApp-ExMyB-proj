@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+<!--  -->
+{% block title %}
+{{ post.productName }}
+{% endblock %}
+
+<!--  -->
+{% block content %}
+
+<!-- <h1>
+    {{ post.productName }}
+</h1>
+
+<h6>
+    🌟 Rating: {{ post.rating }}/5
+    <br>
+    Sold By: {{post.seller.first_name}} {{post.seller.last_name}}
+    <br>
+    Listed on: {{ post.publishedDate }}
+    <br>
+    Category: {{ post.category}}
+</h6>
+
+{% if user.is_authenticated and user.id == post.seller.id %}
+<a href="{% url 'updateProduct' post.pk %}">
+    EDIT</a> |
+<a href="{% url 'deleteProduct' post.pk %}">
+    DELETE</a>
+
+{% endif %}
+</small>
+
+<hr>
+<p align=justify>
+    <b>
+        About the product: <br>
+    </b>
+    {{ post.productDetails|safe }}
+</p>
+
+<hr>
+
+<img src="{{ post.productImage.url}}" height="200" width="200">
+
+<hr>
+
+<a href="#" class="btn btn-success">Buy Now</a>
+<a href="#" class="btn btn-warning">Add to Cart</a>
+<a href="{% url 'products' %}" class="btn btn-secondary">Back</a>
+
+<hr> -->
+
+<div class="row row-cols-2">
+    <div class="col">
+        <img src="{{ post.productImage.url}}" height="75%" width="75%" class="border rounded mx-auto d-block">
+    </div>
+    <div class="col">
+        <div class="col">
+
+            <h1>
+                {{ post.brand }}: {{ post.productName }}
+            </h1>
+
+            <h6>
+                🌟 Rating: {{ post.rating }}/5
+                <br>
+                Sold By: {{post.seller.first_name}} {{post.seller.last_name}}
+                <br>
+                Listed on: {{ post.publishedDate }}
+                <br>
+                Category: {{ post.category}}
+            </h6>
+            <!-- <br> -->
+            <div>
+
+                <a href="#" class="btn btn-success">Buy Now</a>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
+            </div>
+            <!-- User authentication for editing and deleting products -->
+            {% if user.is_authenticated and user.id == post.seller.id %}
+            <small>
+            <a href="{% url 'updateProduct' post.pk %}">
+                EDIT</a> |
+            <a href="{% url 'deleteProduct' post.pk %}">
+                DELETE</a>
+            
+            </small>
+            {% endif %}
+            <hr>
+        </div>
+        <div class="col">
+            <p align=justify>
+                <b>
+                    About the product: <br>
+                </b>
+                {{ post.productDetails|safe }}
+            </p>
+        </div>
+
+    </div>
+</div>
+    <hr>
+    <center>
+
+        <a href="#" class="btn btn-success">Buy Now</a>
+        <a href="#" class="btn btn-primary">Add to Cart</a>
+        <a href="{% url 'products' %}" class="btn btn-secondary">Back</a>
+    </center>
+
+{% endblock %}
