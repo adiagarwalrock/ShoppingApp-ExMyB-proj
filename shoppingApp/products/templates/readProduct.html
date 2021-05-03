@@ -53,7 +53,9 @@
 
 <div class="row row-cols-2">
     <div class="col">
-        <img src="{{ post.productImage.url}}" height="75%" width="75%" class="border rounded mx-auto d-block">
+        {% if post.productImage %}
+            <img src="{{ post.productImage.url}}" height="75%" width="75%" class="border rounded mx-auto d-block">
+        {% endif %}
     </div>
     <div class="col">
         <div class="col">

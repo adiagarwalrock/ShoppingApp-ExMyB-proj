@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Search {{ search }}
+{% endblock %}
+
+{% block content %}
+
+{% if search %}
+<h1>
+    <center>
+        Search results for "{{ search }}"
+    </center>
+</h1>
+<hr>
+<br>
+
+<div class="row">
+    {% for post in products %}
+    <div class="col-sm-3">
+        <div class="card">
+            <!-- <img src="..." class="card-img-top" alt="..." height="200" width="200"> -->
+            <img src="{{ post.productImage.url}}" class="card-img-top rounded" height="200" width="auto">
+            <div class="card-body">
+                <h5 class="card-title">
+                    {{post.brand}}: {{post.productName}}
+
+                </h5>
+                <p class="card-text">
+                    Rs. {{post.price}}\- only
+                    <br> <b>
+                        🌟
+                    </b>
+                    {{ post.rating }} of 5
+                    <br> @{{post.seller}}
+                    <b>
+                        Category:
+                    </b>
+                    {{ post.category}}
+                    <!-- <br> {{ post.productDetails|slice:":100"|safe }}... -->
+                </p>
+                <a href="{% url 'product' post.pk %}" class="btn btn-primary">Buy Now</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% else %}
+<div class="card border-primary mb-6 position-static mx-auto shadow p-3 mb-5 bg-body rounded" style="width: 50rem;">
+
+    <div class="card-body">
+
+        <h1>
+            <center>
+                <div class="alert alert-danger" role="alert">
+                    Nothing to Search
+                </div>
+
+                <br>
+                <br>
+                <div class="card-footer text-center">
+                    <a class="btn btn-success" href="{% url 'home' %}">Home</a>
+                </div>
+
+            </center>
+        </h1>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

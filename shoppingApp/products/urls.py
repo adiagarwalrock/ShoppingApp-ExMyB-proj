@@ -18,6 +18,7 @@ from . import views
 from .views import ProductsListView, HomeView
 from .views import AddNewProductView, UpdateProductView, DeleteProductView, ProductView
 from .views import AddNewCategoryView, categoryView, CategoryListView
+from .views import searchResultsView
 
 urlpatterns = [
     path('', HomeView.as_view(), name="home"),
@@ -29,4 +30,5 @@ urlpatterns = [
     path('addNewCategory/', AddNewCategoryView.as_view(), name="addNewCategory"),
     path('category/<str:category>', categoryView, name="category"),
     path('category/', CategoryListView, name="categoryList"),
+    path('search/', searchResultsView, name="searchresults"),
 ]

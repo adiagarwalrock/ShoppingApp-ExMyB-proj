@@ -32,7 +32,7 @@ class Post(models.Model):
     def __str__(self):
         # on admin page this will allow us to see the
         # title on the product and the name of author
-        return self.productName + ' | ' + str(self.seller)
+        return self.brand + ' | ' +self.productName + ' | ' + str(self.seller)
 
     def get_absolute_url(self):
         return reverse('home')

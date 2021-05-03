@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView, TemplateView, CreateView,
 from .models import Post, Categories
 from .forms import PostForm, UpdateForm, NewCategoryForm
 from django.urls import reverse_lazy
+from django.db.models import Q
 
 # Create your views here.
 
@@ -61,3 +62,19 @@ def categoryView(request, category):
 def CategoryListView(request):
     categoriesList = Categories.objects.all()
     return render(request, 'categories.html', {'categoryList': categoriesList})
+
+
+def searchResultsView(request):
+    if request.method == 'POST':
+        search = request.POST['search']
+        product = Post.objects.filter(
+            Q(productName__contains=search) | Q(brand__contains=search)
+            | Q(productDetails=search))
+        return render(
+            request,
+            'search.html', {
+                'search': search,
+                'products': product
+            })
+    else:
+        return render(request, 'search.html', {})
