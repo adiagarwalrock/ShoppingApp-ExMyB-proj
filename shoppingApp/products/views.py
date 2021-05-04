@@ -1,9 +1,13 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
-from .models import Post, Categories
-from .forms import PostForm, UpdateForm, NewCategoryForm
 from django.urls import reverse_lazy
 from django.db.models import Q
+from django.http import HttpResponse
+
+from .forms import PostForm, UpdateForm, NewCategoryForm
+from .models import Post, Categories
+
+import json
 
 # Create your views here.
 
@@ -70,11 +74,27 @@ def searchResultsView(request):
         product = Post.objects.filter(
             Q(productName__contains=search) | Q(brand__contains=search)
             | Q(productDetails=search))
-        return render(
-            request,
-            'search.html', {
-                'search': search,
-                'products': product
-            })
+        return render(request, 'search.html', {
+            'search': search,
+            'products': product
+        })
     else:
         return render(request, 'search.html', {})
+
+
+def search_auto(request):
+    if request.is_ajax():
+        search = request.GET.get('term', '')
+        products = Post.objects.filter(
+            Q(productName__contains=search) | Q(brand__contains=search)
+            | Q(productDetails=search))
+        results = []
+        for quer in products:
+            # product_json = {}
+            product_json = quer.productName
+            results.append(product_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)

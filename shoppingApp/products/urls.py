@@ -14,7 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('product/', include('product.urls'))
 """
 from django.urls import path
-from . import views
 from .views import ProductsListView, HomeView
 from .views import AddNewProductView, UpdateProductView, DeleteProductView, ProductView
 from .views import AddNewCategoryView, categoryView, CategoryListView
