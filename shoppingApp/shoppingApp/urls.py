@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('products.urls')),
-    path('users/', include('django.contrib.auth.urls')),
-    path('users/', include('userAuthentication.urls')),
+    path('userAuthentication/', include('django.contrib.auth.urls')),
+    path('userAuthentication/', include('userAuthentication.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
