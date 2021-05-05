@@ -26,6 +26,6 @@ urlpatterns = [
     path('', include('products.urls')),
     path('userAuthentication/', include('django.contrib.auth.urls')),
     path('userAuthentication/', include('userAuthentication.urls')),
-    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('search_auto/', views.search_auto, name='search_auto'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
