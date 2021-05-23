@@ -1,6 +1,6 @@
-# ShoppingApp-ExMyB-proj
+# ShoppingApp-proj
 
-Design a basic ecommerce application consisting of products from different categories. Note:- categories will have sub-categories and each sub-category may have their sub-categories.
+To design a basic E-commerce application consisting of products from different categories. 
 
 1) Create a page to add products to the database. (Use rest api for entering/updating data into the database). Each product must be mapped to a certain category
 2) Products modification page (updation/deletion).
@@ -8,6 +8,6 @@ Design a basic ecommerce application consisting of products from different categ
 4) Products listing page per category wise (use REST API's for calling data from the database.) 
 5) Implement a search functionality for finding the products. It will be a plus if you will be able to implement search suggestion features.
 
-**Note**:- You have to use a python based framework like (Django) to build this application.
+**Note**:- Python based framework like (Django) is being used to build this application.
 
-Post completing your task you have to host it online using heroku or any other platform.
+The above project is hosted at http://aditya1509.pythonanywhere.com/
