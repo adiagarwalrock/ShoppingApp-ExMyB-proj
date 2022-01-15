@@ -18,9 +18,9 @@ Product Categories
     <div class="col-sm-3 pb-4">
         <div class="card border-success text-black">
             <div class="card-body text-black">
-                <h5 class="card-title">{{ item }}</h5>
+                <h5 class="card-title">{{ item.name }}</h5>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="{% url 'category' item %}" class="btn btn-primary">Visit</a>
+                <a href="{% url 'category' item.name %}" class="btn btn-primary">Visit</a>
             </div>
         </div>
     </div>

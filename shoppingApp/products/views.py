@@ -19,7 +19,8 @@ class HomeView(TemplateView):
 
 class ProductsListView(ListView):
     model = Post
-    template_name = 'products.html'  # Page to render all the Products(list the Product).
+    # Page to render all the Products(list the Product).
+    template_name = 'products.html'
     # ordering = ['-publishedDate']
     ordering = ['-id']
 
@@ -64,8 +65,8 @@ def categoryView(request, category):
 
 
 def CategoryListView(request):
-    categoriesList = Categories.objects.all()
-    return render(request, 'categories.html', {'categoryList': categoriesList})
+    categoryList = Categories.objects.all()
+    return render(request, 'categories.html', {'categoryList': categoryList})
 
 
 def searchResultsView(request):
